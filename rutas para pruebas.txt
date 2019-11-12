@@ -1,0 +1,64 @@
+Mostrar todos los usuarios
+GET get users
+headers
+http://localhost:8080/users
+Content-Type	application/json
+token		cEWAv6b8xyhAYUoZ2mElCKKZd95s71Gm
+____________________________________________________
+
+Crear un nuevo usuario
+POST post users
+localhost:8080/users
+headers
+Content-Type	application/json
+
+json
+ {
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "password": ""
+ }
+
+____________________________________________________
+
+Login de usuario
+POST post login
+localhost:8080/login
+headers
+Content-Type	application/json
+
+json
+{
+	"email":"helmunt@gmail.com",
+	"password":"helmuntv"
+}
+
+_____________________________________________________
+
+Modificar un usuario
+PUT modificarusuario
+localhost:8080/users/3
+Content-Type	application/json
+token		cEWAv6b8xyhAYUoZ2mElCKKZd95s71Gm
+
+json
+{
+	"first_name":"juan",
+	"password":"juanr"
+}
+_____________________________________________________
+
+Eliminiar usuario
+DELETE eliminar usuario
+localhost:8080/users/2
+Content-Type	application/json
+token		cEWAv6b8xyhAYUoZ2mElCKKZd95s71Gm
+
+json
+{
+	"id":"2"
+}
+______________________________________________________
+
+
