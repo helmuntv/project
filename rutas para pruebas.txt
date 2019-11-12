@@ -45,6 +45,8 @@ token		cEWAv6b8xyhAYUoZ2mElCKKZd95s71Gm
 json
 {
 	"first_name":"juan",
+    "last_name": "romero",
+    "email":"juan@juan.com",
 	"password":"juanr"
 }
 _____________________________________________________
