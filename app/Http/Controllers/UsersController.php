@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UsersController extends Controller
 {
+    /**
+    * funcion para mostrar todos los usuarios
+    */
     function index(Request $request){
 
         if($request->isJson()){
@@ -18,6 +21,9 @@ class UsersController extends Controller
         return response()->json(['error' => 'Unauthorized'], 401);
     }
 
+    /*
+    * funcion para crear usuarios
+    */
     function createUser(Request $request){
 
         if($request->isJson()){
@@ -35,6 +41,9 @@ class UsersController extends Controller
         return response()->json(['error' => 'Unauthorized'], 401);
     }
 
+    /*
+    * funcion para modificar un usuarios en especifico
+    */
     function updateUser(Request $request, $id)
     {
         if ($request->isJson()) {
@@ -55,6 +64,9 @@ class UsersController extends Controller
         }
     }
 
+    /*
+    * funcion para eliminar un usuario en especifico
+    */
     function deleteUser(Request $request, $id)
     {
         if ($request->isJson()) {
@@ -70,7 +82,9 @@ class UsersController extends Controller
         }
     }
 
-    //login
+    /*
+    * funcion para el login de un usuario
+    */
     function getToken(Request $request){
         if($request->isJson()){
             try{
