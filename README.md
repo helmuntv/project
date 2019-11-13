@@ -1,6 +1,8 @@
 pasos para la creación del proyecto
 # project
 
+API Rest para login de usuarios 
+
 PHP >= 7.2
 OpenSSL PHP Extension
 PDO PHP Extension
