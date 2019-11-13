@@ -4,9 +4,9 @@ pasos para la creación del proyecto
 API Rest para login de usuarios 
 
 # Paso a Paso
-PHP >= 7.2
-OpenSSL PHP Extension
-PDO PHP Extension
+PHP >= 7.2 <br>
+OpenSSL PHP Extension<br>
+PDO PHP Extension<br>
 Mbstring PHP Extension
 
 Primero, descargue el Composer-Setup.exe de https://getcomposer.org/download/
