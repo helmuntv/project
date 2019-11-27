@@ -13,6 +13,13 @@
 
 $router->post('/login',['uses' => 'UsersController@getToken']);
 
+$router->get('/authors',['uses' => 'AuthorController@index']);
+$router->post('/authors',['uses' => 'AuthorController@store']);
+$router->get('/authors/{id}',['uses' => 'AuthorController@show']);
+$router->put('/authors/{id}',['uses' => 'AuthorController@update']);
+$router->patch('/authors/{id}',['uses' => 'AuthorController@update']);
+$router->delete('/authors',['uses' => 'AuthorController@destroy']);
+
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
