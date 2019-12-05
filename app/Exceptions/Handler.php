@@ -74,6 +74,13 @@ class Handler extends ExceptionHandler {
 			return $this->errorResponse($errors, Response::HTTP_UNPROCESSABLE_ENTITY);
 		}
 
+		if ($exception instanceOf ClientException) {
+			$message = $exception->getResponse()->getBody();
+			$code = $exception->getCode();
+
+			return $this->errorMessage($message, $code);
+		}
+
 		if (env('APP_DEBUG', false)) {
 			return parent::render($request, $exception);
 		}
