@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\Author;
 use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Validator;
 
 class BookController extends Controller {
 	use ApiResponser;
@@ -40,8 +42,14 @@ class BookController extends Controller {
 			'title' => 'required|max:255',
 			'description' => 'required|max:255',
 			'price' => 'required|min:1',
-			'author_id' => 'required|author_id|min:1|unique:authors,id',
+			//'author_id' => 'required|min:1|unique:authors,id'
 		];
+
+		$author = Author::find($request->author_id);
+
+		if(!$author){
+			return $this->errorMessage('No se encontro un instancia para el autor solicitado', Response::HTTP_NOT_FOUND);
+		}
 
 		$this->validate($request, $rules);
 
