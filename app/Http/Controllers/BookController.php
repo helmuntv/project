@@ -47,7 +47,7 @@ class BookController extends Controller {
 
 		$author = Author::find($request->author_id);
 
-		if(!$author && !$empty){
+		if(!$author){
 			return $this->errorMessage('No se encontro un instancia para el autor solicitado', Response::HTTP_NOT_FOUND);
 		}
 
