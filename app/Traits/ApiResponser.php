@@ -20,7 +20,7 @@ trait ApiResponser
     }
 
     /**
-     * buid a error responses
+     * build a error responses
      * 
      * @param string $message
      * @param int $code
@@ -42,7 +42,7 @@ trait ApiResponser
      */
     public function errorMessage($message, $code)
     {
-        return response($message, $code)->header('Content-Type', 'application/json');
+        return response()->json(['error' => $message, 'code' => $code]);
     }
 
 
