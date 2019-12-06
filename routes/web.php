@@ -11,21 +11,7 @@
 |
  */
 
-$router->post('/login', ['uses' => 'UsersController@getToken']);
-
-$router->get('/authors', ['uses' => 'AuthorController@index']);
-$router->post('/authors', ['uses' => 'AuthorController@store']);
-$router->get('/authors/{id}', ['uses' => 'AuthorController@show']);
-$router->put('/authors/{id}', ['uses' => 'AuthorController@update']);
-$router->patch('/authors/{id}', ['uses' => 'AuthorController@update']);
-$router->delete('/authors/{id}', ['uses' => 'AuthorController@destroy']);
-
-$router->get('/books', ['uses' => 'BookController@index']);
-$router->post('/books', ['uses' => 'BookController@store']);
-$router->get('/books/{id}', ['uses' => 'BookController@show']);
-$router->put('/books/{id}', ['uses' => 'BookController@update']);
-$router->patch('/books/{id}', ['uses' => 'BookController@update']);
-$router->delete('/books/{id}', ['uses' => 'BookController@destroy']);
+$router->post('/login', ['uses' => 'UserController@getToken']);
 
 $router->get('/', function () use ($router) {
 	return $router->app->version();
@@ -36,8 +22,32 @@ $router->get('/key', function () {
 });
 
 $router->group(['middleware' => ['auth']], function () use ($router) {
-	$router->get('/users', ['uses' => 'UsersController@index']);
-	$router->post('/users', ['uses' => 'UsersController@createUser']);
-	$router->put('/users/{id}', ['uses' => 'UsersController@updateUser']);
-	$router->delete('/users/{id}', ['uses' => 'UsersController@deleteUser']);
+	/*
+	* Users routes
+	*/
+	$router->get('/users', ['uses' => 'UserController@index']);
+	$router->post('/users', ['uses' => 'UserController@store']);
+	$router->put('/users/{id}', ['uses' => 'UserController@show']);
+	$router->put('/users/{id}', ['uses' => 'UserController@update']);
+	$router->delete('/users/{id}', ['uses' => 'UserController@destroy']);
+
+	/*
+	* Routes for authors
+	*/
+	$router->get('/authors', ['uses' => 'AuthorController@index']);
+	$router->post('/authors', ['uses' => 'AuthorController@store']);
+	$router->get('/authors/{id}', ['uses' => 'AuthorController@show']);
+	$router->put('/authors/{id}', ['uses' => 'AuthorController@update']);
+	$router->patch('/authors/{id}', ['uses' => 'AuthorController@update']);
+	$router->delete('/authors/{id}', ['uses' => 'AuthorController@destroy']);
+
+	/*
+	* Routes for books
+	*/
+	$router->get('/books', ['uses' => 'BookController@index']);
+	$router->post('/books', ['uses' => 'BookController@store']);
+	$router->get('/books/{id}', ['uses' => 'BookController@show']);
+	$router->put('/books/{id}', ['uses' => 'BookController@update']);
+	$router->patch('/books/{id}', ['uses' => 'BookController@update']);
+	$router->delete('/books/{id}', ['uses' => 'BookController@destroy']);
 });
