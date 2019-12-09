@@ -11,7 +11,11 @@
 |
  */
 
-$router->post('/login', ['uses' => 'UserController@getToken']);
+	$router->get('/posts', ['uses' => 'PostController@index']);
+	$router->post('/posts', ['uses' => 'PostController@store']);
+	$router->put('/posts/{id}', ['uses' => 'PostController@show']);
+	$router->put('/posts/{id}', ['uses' => 'PostController@update']);
+	$router->delete('/posts/{id}', ['uses' => 'PostController@destroy']);
 
 $router->get('/', function () use ($router) {
 	return $router->app->version();
