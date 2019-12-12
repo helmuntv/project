@@ -14,7 +14,7 @@
 $factory->define(App\Post::class, function (Faker\Generator $faker) {
 	return [
         'name' => $faker->sentence(2, true),
-        'author' => $faker->sentence(4, true),
+        'author' => $faker->name(),
 		'description' => $faker->sentence(8, true),		
 	];
 });
