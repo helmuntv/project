@@ -26,8 +26,10 @@ class PostController extends Controller {
 	 * @return Illuminate\Http\Response
 	 */
 	public function index() {
-        $posts = DB::table('posts')->get();
-        //$posts = Post::all();
+        //$posts = DB::table('posts')->get();
+        //$posts = Post::withTrashed()->get(); trae todos los registros de la base de datos con los que tambien han sido eliminados 
+        //$posts = Post::onlyTrashed()->get(); trae unicamente los registros que han sido eliminados
+        $posts = Post::all();
 
 		return $this->successResponse($posts);
 	}
@@ -39,9 +41,9 @@ class PostController extends Controller {
 	 */
 	public function store(Request $request) {
 		$rules = [
-			'name' => 'required|max:255',
-			'author' => 'required|max:255',
-			'description' => 'required|max:255',
+			'name' => 'required|min:5|max:255',
+			'author' => 'required|min:5|max:255',
+			'description' => 'required|min:5|max:255',
 		];
 
 		$this->validate($request, $rules);
@@ -69,9 +71,9 @@ class PostController extends Controller {
 	 */
 	public function update(Request $request, $id) {
 		$rules = [
-			'name' => 'max:255',
-			'author' => 'max:255',
-			'description' => 'max:255',
+			'name' => 'min:5|max:255',
+			'author' => 'min:5|max:255',
+			'description' => 'min:5|max:255',
 		];
 
 		$this->validate($request, $rules);

@@ -13,7 +13,7 @@
 
 	$router->get('/posts', ['uses' => 'PostController@index']);
 	$router->post('/posts', ['uses' => 'PostController@store']);
-	$router->put('/posts/{id}', ['uses' => 'PostController@show']);
+	$router->get('/posts/{id}', ['uses' => 'PostController@show']);
 	$router->put('/posts/{id}', ['uses' => 'PostController@update']);
 	$router->delete('/posts/{id}', ['uses' => 'PostController@destroy']);
 
@@ -31,7 +31,7 @@ $router->group(['middleware' => ['auth']], function () use ($router) {
 	*/
 	$router->get('/users', ['uses' => 'UserController@index']);
 	$router->post('/users', ['uses' => 'UserController@store']);
-	$router->put('/users/{id}', ['uses' => 'UserController@show']);
+	$router->get('/users/{id}', ['uses' => 'UserController@show']);
 	$router->put('/users/{id}', ['uses' => 'UserController@update']);
 	$router->delete('/users/{id}', ['uses' => 'UserController@destroy']);
 
