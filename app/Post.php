@@ -22,4 +22,28 @@ class Post extends Model
         'author', 
         'description',
     ];
+
+    public function scopeActive($query){
+        return $query->where('active', 1);
+    }
+
+    public function getNameAttribute($value){
+        return strtoupper($value);
+    }
+
+    public function getDescriptionAttribute($value){
+        return strtolower($value);
+    }
+
+    public function setDescriptionAttribute($value){
+        $this->attributes['description'] = ucwords($value);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function comments(){
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 }

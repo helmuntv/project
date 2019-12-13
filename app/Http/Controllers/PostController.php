@@ -47,7 +47,7 @@ class PostController extends Controller {
 		];
 
 		$this->validate($request, $rules);
-
+		
 		$post = Post::create($request->all());
 
 		return $this->successResponse($post, Response::HTTP_CREATED);
@@ -59,8 +59,8 @@ class PostController extends Controller {
 	 * @return Illuminate\Http\Response
 	 */
 	public function show($id) {
-		$post = Post::findOrFail($id);
-
+		$post = Post::active()->get();
+		
 		return $this->successResponse($post);
 	}
 
@@ -77,7 +77,7 @@ class PostController extends Controller {
 		];
 
 		$this->validate($request, $rules);
-
+		
 		$post = Post::findOrFail($id);
 
 		$post->fill($request->all());

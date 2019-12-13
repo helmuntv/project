@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use App\User;
+use App\Address;
+use App\Country;
 use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -51,9 +54,23 @@ class UserController extends Controller
 	 * @return Illuminate\Http\Response
 	 */
 	public function show($id) {
-		$user = User::findOrFail($id);
-
-		return $this->successResponse($user);
+        //$user = User::findOrFail($id);
+        //return $this->successResponse($user->posts);
+        //return $this->successResponse($user->address); //si se quiere devolver la direccion que esta asociada a ese usuario 
+        //return $this->successResponse($user->roles);
+        //return $this->successResponse($user);
+        
+        //$address = Address::findOrFail($id); //buscar el id de una direccion
+        //return $this->successResponse($address->user); //si se quiere mostrar los datos del usuario asociado a una direccion
+        
+        //posts = Post::findOrFail($id);//buscar el id de un post
+        //return $this->successResponse($posts->user); //se muestran los datos del usuario asocicado a un post
+        
+        //$role = Role::findOrFail($id);
+        //return $this->successResponse($role->users);
+        
+        $country = Country::findOrFail($id);
+        return $this->successResponse($country->posts);
 	}
 
     /*
