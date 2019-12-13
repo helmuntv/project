@@ -25,6 +25,8 @@ $router->get('/key', function () {
 	return str_random(32);
 });
 
+$router->post('/login',['uses' => 'UserController@getToken']);
+
 $router->group(['middleware' => ['auth']], function () use ($router) {
 	/*
 	* Users routes
