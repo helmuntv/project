@@ -8,13 +8,15 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 
-class Comment extends Model
+class Tag extends Model
 {
-    protected $fillable = [
-        'content',
-    ];
+    protected $fillable = ['tag_id'];
 
-   public function commentable(){
-       return $this->morphTo();
-   }
+    public function posts(){
+        return $this->morphedByMany(Post::class, 'taggable');
+    }
+
+    public function posvideosts(){
+        return $this->morphedByMany(Video::class, 'taggable');
+    }
 }

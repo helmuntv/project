@@ -17,6 +17,16 @@
 	$router->put('/posts/{id}', ['uses' => 'PostController@update']);
 	$router->delete('/posts/{id}', ['uses' => 'PostController@destroy']);
 
+	$router->post('/comments/posts/{id}', ['uses' => 'CommentController@storeCommentPost']);
+	$router->post('/comments/videos/{id}', ['uses' => 'CommentController@storeCommentVideo']);
+	$router->get('/comments/posts/{id}', ['uses' => 'CommentController@showCommentPost']);
+	$router->get('/comments/videos/{id}', ['uses' => 'CommentController@showCommentVideo']);
+
+	$router->post('/tags/posts/{id}', ['uses' => 'TagController@storeTagPost']);
+	$router->post('/tags/videos/{id}', ['uses' => 'TagController@storeTagVideo']);
+	$router->get('/tags/posts/{id}', ['uses' => 'TagController@showTagPost']);
+	$router->get('/tags/videos/{id}', ['uses' => 'TagController@showTagVideo']);
+
 $router->get('/', function () use ($router) {
 	return $router->app->version();
 });
